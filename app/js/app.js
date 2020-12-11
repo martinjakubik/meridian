@@ -1,8 +1,6 @@
 import { createCanvas } from '../../lib/js/hypertext.js';
 import { redrawGrid } from './drawing.js';
 
-console.log('meridian');
-
 const CANVAS_ID = 'meridian-map';
 const GRID_WIDTH = 16;
 const GRID_PIXEL_SIZE = 30;
