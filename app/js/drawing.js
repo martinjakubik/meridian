@@ -25,7 +25,9 @@ let drawSquare = function (oCanvas, x, y, gridCellSize, isFilled) {
  */
 let fillSquare = function (oCanvas, x, y, gridCellSize) {
     let oDrawingTool = oCanvas.getContext('2d');
-    oDrawingTool.fillRect(x, y, gridCellSize, gridCellSize);
+    let nPositionX = x * gridCellSize;
+    let nPositionY = y * gridCellSize;
+    oDrawingTool.fillRect(nPositionX, nPositionY, gridCellSize, gridCellSize);
 };
 
 /**
