@@ -9,3 +9,8 @@ const GRID_PIXEL_SIZE = 30;
 
 let oMeridianCanvas = createCanvas(CANVAS_ID, 0);
 redrawGrid(oMeridianCanvas, GRID_WIDTH, GRID_PIXEL_SIZE);
+
+let handleMeridianCanvasTapped = function (event) {
+    console.log(event);
+};
+oMeridianCanvas.onclick = handleMeridianCanvasTapped;
