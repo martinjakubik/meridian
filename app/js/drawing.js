@@ -1,3 +1,11 @@
+/**
+ * 
+ * @param {*} oCanvas a canvas object to draw on
+ * @param {Number} x x position of the square, zero is top
+ * @param {Number} y y position of the square, zero is left
+ * @param {Number} size size of the square in pixels
+ * @param {Boolean} isFilled if the square is filled in
+ */
 let drawSquare = function (oCanvas, x, y, size, isFilled) {
     let bIsFilled = isFilled || false;
     let oDrawingTool = oCanvas.getContext('2d');
