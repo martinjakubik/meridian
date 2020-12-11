@@ -3,15 +3,30 @@ import { CANVAS_HEIGHT, createButton, createCanvas, createCheckbox, createNumber
 console.log('meridian');
 
 const CANVAS_ID = 'meridian-map';
-const GRID_WIDTH = 10;
+const GRID_WIDTH = 16;
+const GRID_PIXEL_SIZE = 30;
 
-let drawSquare = function (oContext, x, y, size) {
-    oContext.drawRect(x, y, x + size, y + size);
+let drawSquare = function (oCanvas, x, y, size, isFilled) {
+    let bIsFilled = isFilled || false;
+    let oDrawingTool = oCanvas.getContext('2d');
+    if (bIsFilled) {
+        oDrawingTool.fillRect(x, y, size, size);
+    } else {
+        oDrawingTool.strokeRect(x, y, size, size);
+    }
 };
 
-createCanvas(CANVAS_ID, 0);
+let oMeridianCanvas = createCanvas(CANVAS_ID, 0);
 
-let x = 0;
-while (x < GRID_WIDTH) {
-    x = x + 1;
+let x = 0, y = 0;
+let nPositionX = 0, nPositionY = 0;
+while (y < GRID_WIDTH) {
+    x = 0;
+    while (x < GRID_WIDTH) {
+        nPositionX = x * GRID_PIXEL_SIZE;
+        nPositionY = y * GRID_PIXEL_SIZE;
+        drawSquare(oMeridianCanvas, nPositionX, nPositionY, GRID_PIXEL_SIZE);
+        x = x + 1;
+    };
+    y = y + 1;
 };
