@@ -1,20 +1,10 @@
 import { createCanvas, getStyles } from '../../lib/js/hypertext.js';
 import { fillSquare, redrawGrid } from './drawing.js';
+import { makeGrid } from './model.js';
 
 const CANVAS_ID = 'meridian-map';
 const GRID_WIDTH = 16;
 const GRID_CELL_SIZE = 30;
-
-let makeGrid = function(nGridWidth) {
-    let oGrid = [];
-    for (let y = 0; y < nGridWidth; y++) {
-        oGrid.push([]);
-        for (let x = 0; x < nGridWidth; x++) {
-            oGrid[y].push(0);
-        }
-    }
-    return oGrid;
-};
 
 let oGrid = makeGrid(GRID_WIDTH);
 
