@@ -21,6 +21,10 @@ class Grid {
         this.gridModel[y][x] = this.gridModel[y][x] === 0 ? 1 : 0;
     }
 
+    get(x, y) {
+        return this.gridModel[y][x];
+    }
+
 }
 
 export { Grid };
