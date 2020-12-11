@@ -1,20 +1,11 @@
-import { CANVAS_HEIGHT, createButton, createCanvas, createCheckbox, createNumberInput, createSlider, setBlockVisibility } from '../../lib/js/hypertext.js';
+import { createCanvas } from '../../lib/js/hypertext.js';
+import { drawSquare } from './drawing.js';
 
 console.log('meridian');
 
 const CANVAS_ID = 'meridian-map';
 const GRID_WIDTH = 16;
 const GRID_PIXEL_SIZE = 30;
-
-let drawSquare = function (oCanvas, x, y, size, isFilled) {
-    let bIsFilled = isFilled || false;
-    let oDrawingTool = oCanvas.getContext('2d');
-    if (bIsFilled) {
-        oDrawingTool.fillRect(x, y, size, size);
-    } else {
-        oDrawingTool.strokeRect(x, y, size, size);
-    }
-};
 
 let oMeridianCanvas = createCanvas(CANVAS_ID, 0);
 
