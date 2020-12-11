@@ -51,4 +51,4 @@ let redrawGrid = function (canvas, gridWidth, gridCellSize) {
 
 };
 
-export { drawSquare, redrawGrid };
+export { drawSquare, fillSquare, redrawGrid };
