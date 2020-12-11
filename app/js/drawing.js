@@ -17,16 +17,30 @@ let drawSquare = function (oCanvas, x, y, gridCellSize, isFilled) {
 };
 
 /**
- * 
+ * fills a square on the grid
  * @param {*} oCanvas a canvas object to draw on
  * @param {Number} x x position in grid cells, zero is top
  * @param {Number} y y position in grid cells, zero is left
  * @param {Number} gridCellSize width of a grid cell in pixels
  */
 let fillSquare = function (oCanvas, x, y, gridCellSize) {
+    let nPositionX = x * gridCellSize;
+    let nPositionY = y * gridCellSize;
+    drawSquare(oCanvas, nPositionX, nPositionY, gridCellSize, gridCellSize, true);
+};
+
+/**
+ * clears a square on the grid
+ * @param {*} oCanvas a canvas object to draw on
+ * @param {Number} x x position in grid cells, zero is top
+ * @param {Number} y y position in grid cells, zero is left
+ * @param {Number} gridCellSize width of a grid cell in pixels
+ */
+let clearSquare = function (oCanvas, x, y, gridCellSize) {
     let oDrawingTool = oCanvas.getContext('2d');
     let nPositionX = x * gridCellSize;
     let nPositionY = y * gridCellSize;
+    oDrawingTool.fillStyle = '#ffffff';
     oDrawingTool.fillRect(nPositionX, nPositionY, gridCellSize, gridCellSize);
 };
 
