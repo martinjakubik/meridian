@@ -1,0 +1,22 @@
+{
+  "name": "meridian",
+  "version": "1.0.0",
+  "description": "maps your house",
+  "main": "app/js/app.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "kmake"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/martinjakubik/meridian.git"
+  },
+  "author": "martin jakubik",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/martinjakubik/meridian/issues"
+  },
+  "homepage": "https://github.com/martinjakubik/meridian#readme"
+}
