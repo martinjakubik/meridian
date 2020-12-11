@@ -8,4 +8,21 @@ let drawSquare = function (oCanvas, x, y, size, isFilled) {
     }
 };
 
-export { drawSquare };
+let redrawGrid = function (canvas, gridWidth, gridPixelSize) {
+
+    let x = 0, y = 0;
+    let nPositionX = 0, nPositionY = 0;
+    while (y < gridWidth) {
+        x = 0;
+        while (x < gridWidth) {
+            nPositionX = x * gridPixelSize;
+            nPositionY = y * gridPixelSize;
+            drawSquare(canvas, nPositionX, nPositionY, gridPixelSize);
+            x = x + 1;
+        };
+        y = y + 1;
+    };
+
+};
+
+export { drawSquare, redrawGrid };
