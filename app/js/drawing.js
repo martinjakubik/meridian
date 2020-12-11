@@ -4,16 +4,15 @@
  * @param {Number} x x position in pixels, zero is top
  * @param {Number} y y position in pixels, zero is left
  * @param {Number} gridCellSize size of the cell in pixels
- * @param {Boolean} isFilled if the cell is filled in
+ * @param {DOMString} fillStyle the style to draw in, usually a color string
  */
-let drawSquare = function (oCanvas, x, y, gridCellSize, isFilled) {
-    let bIsFilled = isFilled || false;
+let drawCell = function (oCanvas, x, y, gridCellSize, fillStyle) {
     let oDrawingTool = oCanvas.getContext('2d');
-    if (bIsFilled) {
+    if (fillStyle) {
+        oDrawingTool.fillStyle = fillStyle;
         oDrawingTool.fillRect(x, y, gridCellSize, gridCellSize);
-    } else {
-        oDrawingTool.strokeRect(x, y, gridCellSize, gridCellSize);
     }
+    oDrawingTool.strokeRect(x, y, gridCellSize, gridCellSize);
 };
 
 /**
@@ -23,10 +22,11 @@ let drawSquare = function (oCanvas, x, y, gridCellSize, isFilled) {
  * @param {Number} y y position in grid cells, zero is left
  * @param {Number} gridCellSize width of a grid cell in pixels
  */
-let fillSquare = function (oCanvas, x, y, gridCellSize) {
+let fillCell = function (oCanvas, x, y, gridCellSize) {
     let nPositionX = x * gridCellSize;
     let nPositionY = y * gridCellSize;
-    drawSquare(oCanvas, nPositionX, nPositionY, gridCellSize, gridCellSize, true);
+    let sFillStyle = '#000000';
+    drawCell(oCanvas, nPositionX, nPositionY, gridCellSize, sFillStyle);
 };
 
 /**
@@ -36,12 +36,11 @@ let fillSquare = function (oCanvas, x, y, gridCellSize) {
  * @param {Number} y y position in grid cells, zero is left
  * @param {Number} gridCellSize width of a grid cell in pixels
  */
-let clearSquare = function (oCanvas, x, y, gridCellSize) {
-    let oDrawingTool = oCanvas.getContext('2d');
+let clearCell = function (oCanvas, x, y, gridCellSize) {
     let nPositionX = x * gridCellSize;
     let nPositionY = y * gridCellSize;
-    oDrawingTool.fillStyle = '#ffffff';
-    oDrawingTool.fillRect(nPositionX, nPositionY, gridCellSize, gridCellSize);
+    let sFillStyle = '#ffffff';
+    drawCell(oCanvas, nPositionX, nPositionY, gridCellSize, sFillStyle);
 };
 
 /**
@@ -59,7 +58,7 @@ let redrawGrid = function (canvas, gridWidth, gridCellSize) {
         while (x < gridWidth) {
             nPositionX = x * gridCellSize;
             nPositionY = y * gridCellSize;
-            drawSquare(canvas, nPositionX, nPositionY, gridCellSize);
+            drawCell(canvas, nPositionX, nPositionY, gridCellSize);
             x = x + 1;
         };
         y = y + 1;
@@ -67,4 +66,4 @@ let redrawGrid = function (canvas, gridWidth, gridCellSize) {
 
 };
 
-export { drawSquare, fillSquare, redrawGrid };
+export { drawCell, fillCell, clearCell, redrawGrid };

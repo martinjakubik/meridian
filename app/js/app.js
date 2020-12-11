@@ -1,5 +1,5 @@
 import { createCanvas, getStyles } from '../../lib/js/hypertext.js';
-import { fillSquare, redrawGrid } from './drawing.js';
+import { fillCell, clearCell, redrawGrid } from './drawing.js';
 import { Grid } from './grid.js';
 
 const CANVAS_ID = 'meridian-map';
@@ -37,7 +37,11 @@ let handleMeridianCanvasTapped = function (event) {
     let nYCell = oClosestCell.y;
     oGrid.toggleCell(nXCell, nYCell);
     let nValue = oGrid.get(nXCell, nYCell);
-    fillSquare(oMeridianCanvas, nXCell, nYCell, GRID_CELL_SIZE, true);
+    if (nValue === 1) {
+        fillCell(oMeridianCanvas, nXCell, nYCell, GRID_CELL_SIZE);
+    } else {
+        clearCell(oMeridianCanvas, nXCell, nYCell, GRID_CELL_SIZE);
+    }
 
 };
 oMeridianCanvas.onclick = handleMeridianCanvasTapped;
