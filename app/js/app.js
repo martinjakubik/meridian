@@ -1,5 +1,4 @@
 import { createCanvas, getStyles } from '../../lib/js/hypertext.js';
-import { fillCell, clearCell, redrawGrid } from './drawing.js';
 import { Grid } from './grid.js';
 
 const CANVAS_ID = 'meridian-map';
@@ -9,7 +8,7 @@ const GRID_CELL_SIZE = 30;
 let oGrid = new Grid(GRID_WIDTH);
 
 let oMeridianCanvas = createCanvas(CANVAS_ID, 'grid', 0);
-redrawGrid(oMeridianCanvas, GRID_WIDTH, GRID_CELL_SIZE);
+oGrid.redraw(oMeridianCanvas, GRID_WIDTH, GRID_CELL_SIZE);
 let oMeridianCanvasStyle = getStyles(oMeridianCanvas);
 let oCanvasRectangle = oMeridianCanvas.getBoundingClientRect();
 let oCanvasOffset = {
@@ -38,9 +37,9 @@ let handleMeridianCanvasTapped = function (event) {
     oGrid.toggleCell(nXCell, nYCell);
     let nValue = oGrid.get(nXCell, nYCell);
     if (nValue === 1) {
-        fillCell(oMeridianCanvas, nXCell, nYCell, GRID_CELL_SIZE);
+        oGrid.fillCell(oMeridianCanvas, nXCell, nYCell, GRID_CELL_SIZE);
     } else {
-        clearCell(oMeridianCanvas, nXCell, nYCell, GRID_CELL_SIZE);
+        oGrid.clearCell(oMeridianCanvas, nXCell, nYCell, GRID_CELL_SIZE);
     }
 
 };
