@@ -2,13 +2,21 @@ import { createCanvas, getStyles } from '../../lib/js/hypertext.js';
 import { Grid } from './grid.js';
 
 const CANVAS_ID = 'meridian-map';
+const nWindowWidth = window.innerWidth;
+const nCanvasWidth = nWindowWidth * 0.8;
 const GRID_WIDTH = 16;
-const GRID_CELL_SIZE = 30;
+const GRID_CELL_SIZE = Math.floor(nCanvasWidth / 16);
 
 let oGrid = new Grid(GRID_WIDTH);
 
-let oMeridianCanvas = createCanvas(CANVAS_ID, 'grid', 0);
+const nCanvasHeight = nCanvasWidth;
+let oMeridianCanvas = createCanvas(CANVAS_ID, 'grid', 0, document.body, nCanvasWidth, nCanvasHeight);
 oGrid.redraw(oMeridianCanvas, GRID_WIDTH, GRID_CELL_SIZE);
+let nMarginSide = Math.floor(( nWindowWidth - oMeridianCanvas.width ) / 2 ) ;
+let sMarginSide = nMarginSide + "px";
+oMeridianCanvas.style.marginLeft = sMarginSide;
+oMeridianCanvas.style.marginRight = sMarginSide;
+  
 let oMeridianCanvasStyle = getStyles(oMeridianCanvas);
 let oCanvasRectangle = oMeridianCanvas.getBoundingClientRect();
 let oCanvasOffset = {
