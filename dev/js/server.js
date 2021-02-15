@@ -31,11 +31,18 @@ let getContentType = function (sPath) {
         sContentType = 'text/html';
     } else if (sPath.includes('/css/')) {
         sContentType = 'text/css';
+    } else if (process.platform === 'win32' && sPath.includes('\\css\\')) {
+        sContentType = 'text/css';
     } else if (sPath.includes('/html/')) {
+        sContentType = 'text/html';
+    } else if (process.platform === 'win32' && sPath.includes('\\html\\')) {
         sContentType = 'text/html';
     } else if (sPath.includes('/js/')) {
         sContentType = 'application/javascript';
+    } else if (process.platform === 'win32' && sPath.includes('\\js\\')) {
+        sContentType = 'application/javascript';
     }
+    console.log(sContentType);
 
     return sContentType;
 }
