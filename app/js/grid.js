@@ -19,6 +19,16 @@ class Grid {
 
     /**
      * toggles the value of a cell
+     * @param {Object} cell a cell with x and y fields
+     */
+    toggleCell (cell) {
+        let x = cell.x;
+        let y = cell.y;
+        this.gridModel[y][x] = this.gridModel[y][x] === 0 ? 1 : 0;
+    }
+
+    /**
+     * toggles the value of a cell
      * @param {Number} x the x index of the cell
      * @param {Number} y the y index of the cell
      */
