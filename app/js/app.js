@@ -43,12 +43,12 @@ let handleMeridianCanvasTapped = function (event) {
     let oClosestCell = getClosestCell(oCanvasOffset, GRID_CELL_SIZE, x, y);
     oGrid.toggleCell(oClosestCell);
 
-    let nValue = oGrid.get(nXCell, nYCell);
+    let nValue = oGrid.getValue(oClosestCell);
 
     if (nValue === 1) {
-        oGrid.fillCell(oMeridianCanvas, nXCell, nYCell, GRID_CELL_SIZE);
+        oGrid.fillCell(oMeridianCanvas, oClosestCell, GRID_CELL_SIZE);
     } else {
-        oGrid.clearCell(oMeridianCanvas, nXCell, nYCell, GRID_CELL_SIZE);
+        oGrid.clearCell(oMeridianCanvas, oClosestCell, GRID_CELL_SIZE);
     }
 
 };

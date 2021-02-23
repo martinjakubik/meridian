@@ -19,12 +19,12 @@ class Grid {
 
     /**
      * toggles the value of a cell
-     * @param {Object} cell a cell with x and y fields
+     * @param {*} cell a cell with x and y fields
      */
     toggleCell (cell) {
         let x = cell.x;
         let y = cell.y;
-        this.gridModel[y][x] = this.gridModel[y][x] === 0 ? 1 : 0;
+        return this.toggleCellXY(x, y);
     }
 
     /**
@@ -32,8 +32,18 @@ class Grid {
      * @param {Number} x the x index of the cell
      * @param {Number} y the y index of the cell
      */
-    toggleCell (x, y) {
+    toggleCellXY (x, y) {
         this.gridModel[y][x] = this.gridModel[y][x] === 0 ? 1 : 0;
+    }
+
+    /**
+     * gets the value of a cell
+     * @param {*} cell a cell with x and y fields
+     */
+    getValue (cell) {
+        let x = cell.x;
+        let y = cell.y;
+        return this.getValueXY(x, y);
     }
 
     /**
@@ -41,7 +51,7 @@ class Grid {
      * @param {Number} x the x index of the cell
      * @param {Number} y the y index of the cell
      */
-    get (x, y) {
+    getValueXY (x, y) {
         return this.gridModel[y][x];
     }
 
@@ -65,11 +75,23 @@ class Grid {
     /**
      * fills a cell on the grid
      * @param {*} canvas a canvas object to draw on
+     * @param {*} a cell with x and y positions in grid cells; (0, 0) is top left
+     * @param {Number} gridCellSize width of a grid cell in pixels
+     */
+    fillCell (canvas, cell, gridCellSize) {
+        let x = cell.x;
+        let y = cell.y;
+        this.fillCellXY(canvas, x, y, gridCellSize);
+    };
+
+    /**
+     * fills a cell on the grid
+     * @param {*} canvas a canvas object to draw on
      * @param {Number} x x position in grid cells, zero is top
      * @param {Number} y y position in grid cells, zero is left
      * @param {Number} gridCellSize width of a grid cell in pixels
      */
-    fillCell (canvas, x, y, gridCellSize) {
+    fillCellXY (canvas, x, y, gridCellSize) {
         let nPositionX = x * gridCellSize;
         let nPositionY = y * gridCellSize;
         let sFillStyle = '#000000';
@@ -79,11 +101,23 @@ class Grid {
     /**
      * clears a cell on the grid
      * @param {*} canvas a canvas object to draw on
+     * @param {*} a cell with x and y positions in grid cells; (0, 0) is top left
+     * @param {Number} gridCellSize width of a grid cell in pixels
+     */
+    clearCell (canvas, cell, gridCellSize) {
+        let x = cell.x;
+        let y = cell.y;
+        this.clearCellXY(canvas, x, y, gridCellSize);
+    };
+
+    /**
+     * clears a cell on the grid
+     * @param {*} canvas a canvas object to draw on
      * @param {Number} x x position in grid cells, zero is top
      * @param {Number} y y position in grid cells, zero is left
      * @param {Number} gridCellSize width of a grid cell in pixels
      */
-    clearCell (canvas, x, y, gridCellSize) {
+    clearCellXY (canvas, x, y, gridCellSize) {
         let nPositionX = x * gridCellSize;
         let nPositionY = y * gridCellSize;
         let sFillStyle = '#ffffff';
