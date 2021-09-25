@@ -144,9 +144,7 @@ class Grid {
             };
             y = y + 1;
         };
-
     };
-
 }
 
 export { Grid };

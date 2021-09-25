@@ -52,4 +52,5 @@ let handleMeridianCanvasTapped = function (event) {
     }
 
 };
+
 oMeridianCanvas.onclick = handleMeridianCanvasTapped;
