@@ -2,6 +2,6 @@
   "name": "meridian",
   "version": "1.0.0",
   "scripts": {
-    "start": "node dev/js/server.js"
+    "start": "node dev/js/guppy.js"
   }
 }
